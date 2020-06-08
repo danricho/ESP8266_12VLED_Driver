@@ -27,7 +27,8 @@ The power regulation module can be found on AliExpress with the search "MINI-360
 |0808 100nF Cap      |1       |C0805X104K101T     |HEC                |LCSC        |C105951      |
 |FDS8896             |3       |FDS8896            |ON Semicon         |LCSC        |C241820      |
 |K2-1107ST-A4SW-06   |2       |K2-1107ST-A4SW-06  |SMD Switches       |LCSC        |C118141      |
-|MP2307-MINI-360     |1       |                   |Search "MINI-360"  |AliExpress  |             |
+|MP2307-MINI-360<td>1</td><td colspan="4">AliExpress - search "MINI-360"</td></tr></table>
+
 
 I haven't included the IO connectors. All are 2.54 pitch and header strips or screw connectors can be used.
 
