@@ -14,6 +14,8 @@ My schematic has some modifications:
 ## PCB
 The PCB is bigger, primarily as I have the space in my application but also (slightly) because of the additional ports.
 
+![Render of PCB](gerber_render.png)
+
 I ordered the PCB from JLCPCB.
 
 ## BOM:
