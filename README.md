@@ -37,4 +37,77 @@ When assembling, solder the power regulation module first and set it to 3.3V out
 This ensures you wont blow up the ESP.
 
 ## Firmware
-The firmware I use makes it play with OpenHab2 over MQTT.
+The firmware I use makes it play with OpenHab2 overMQTT. 
+
+Mine is very specific to my setup, but here is a cut-down version:
+
+```cpp
+// I only use channel 1 as my strip is white not RGB
+#define outputPin 13          // first channel (CH 1 / OUT1)
+#define analogInPin A0        // potentiometer pin (A_IN on PCB)
+#define onboardLED 2          // led on ESP module (for indications)
+int outputBrightness = 0;     // current output brightness
+int lastOutputBrightness = 0; // previous output brightness
+int potSetting = 0;           // current read from the pot
+int lastPotSetting = 0;       // previous read from the pot
+
+void setup() {
+
+  analogWriteFreq(40000);   // this stops any flicker by increasing the PWM frequency
+  
+  pinMode(outputPin, OUTPUT);
+  pinMode(onboardLED, OUTPUT);
+
+  // turn off the output at start
+  analogWrite(outputPin, map(outputBrightness,0,100,0,1023) );
+  
+  // indicate that the code is running on the onboard LED
+  digitalWrite(onboardLED, 0 );
+  delay(50);
+  digitalWrite(onboardLED, 1 );
+  delay(50);
+  digitalWrite(onboardLED, 0 );
+  delay(50);
+  digitalWrite(onboardLED, 1 );
+
+  // setup Wifi here
+  // setup MQTT connection here...
+  
+}
+
+void loop() {
+
+  delay(100);             // slow down the loop  
+  long now = millis();    // current timestamp
+
+  // reconnect to Wifi and MQTT if they have dropped out here.
+    
+  potSetting = map(analogRead(analogInPin), 4, 590, 0, 100);
+  potSetting = (potSetting+10)/20*20; // round to nearest 20%
+
+  // this checks for a legitimate change in potentiometer setting
+  if (abs(lastPotSetting - potSetting) > 1 ){
+    lastPotSetting = potSetting;
+    outputBrightness = potSetting;
+  }
+
+  // this checks if we need to update the output brightness
+  // Note: MQTT commanded changes are handles elsewhere in the code
+  if (abs(lastOutputBrightness - outputBrightness) > 0){
+    lastOutputBrightness = outputBrightness;
+    analogWrite(outputPin, map(outputBrightness,0,100,0,1023) );
+    
+    // indicate a new setting on onboard LED
+    digitalWrite(onboardLED, 0 );
+    delay(50);
+    digitalWrite(onboardLED, 1 );
+    
+    // also notify MQTT that a change has happened.
+  }
+  
+}
+
+
+
+```
+
