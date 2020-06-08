@@ -2,6 +2,7 @@
 
 ## Inspiration
 Based upon the good work of [tjclement/esp-dimmer-hardware](https://github.com/tjclement/esp-dimmer-hardware).
+
 TJCLEMENT's v2 board was good, but I had trouble getting recovering my ESP when an over-the-air firmware update failed.
 
 ## Schematic
@@ -12,11 +13,12 @@ My schematic has some modifications:
 
 ## PCB
 The PCB is bigger, primarily as I have the space in my application but also (slightly) because of the additional ports.
+
 I ordered the PCB from JLCPCB.
 
 ## BOM:
 Most parts are sourced from the sister company of JLCPCB, called LCSC.
-The power regulation module can be found on AliExpress with the search "MINI-360"
+The power regulation module can be found on AliExpress with the search "MINI-360".
 
 |Name                |Quantity|Manufacturer Part  |Manufacturer       |Supplier    |Supplier Part|
 |--------------------|--------|-------------------|-------------------|------------|-------------|
@@ -31,6 +33,7 @@ I haven't included the IO connectors. All are 2.54 pitch and header strips or sc
 
 ## Assembly
 When assembling, solder the power regulation module first and set it to 3.3V output with the 12V input applied.
+
 This ensures you wont blow up the ESP.
 
 ## Firmware
