@@ -58,8 +58,8 @@ void setup() {
   pinMode(outputPin, OUTPUT);
   pinMode(onboardLED, OUTPUT);
 
-  // turn off the output at start
-  analogWrite(outputPin, map(outputBrightness,0,100,0,1023) );
+  // turn off the output at start 
+  analogWrite(outputPin, 0);
   
   // indicate that the code is running on the onboard LED
   digitalWrite(onboardLED, 0 );
@@ -81,7 +81,9 @@ void loop() {
   long now = millis();    // current timestamp
 
   // reconnect to Wifi and MQTT if they have dropped out here.
-    
+  
+  // this reads the potentiometer value and maps it from the ADC ranges (4-590)
+  // to potSetting which is a percent (0-100). Range 4-590 was derived by test.
   potSetting = map(analogRead(analogInPin), 4, 590, 0, 100);
   potSetting = (potSetting+10)/20*20; // round to nearest 20%
 
@@ -95,6 +97,9 @@ void loop() {
   // Note: MQTT commanded changes are handles elsewhere in the code
   if (abs(lastOutputBrightness - outputBrightness) > 0){
     lastOutputBrightness = outputBrightness;
+    
+    // this sets the duty cycle to a value between 0-1023 based on the
+    // outputBrightness which is a percent (0-100).
     analogWrite(outputPin, map(outputBrightness,0,100,0,1023) );
     
     // indicate a new setting on onboard LED
