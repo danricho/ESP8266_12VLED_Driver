@@ -18,16 +18,17 @@ I ordered the PCB from JLCPCB.
 
 ## BOM:
 Most parts are sourced from the sister company of JLCPCB, called LCSC.
+
 The power regulation module can be found on AliExpress with the search "MINI-360".
 
-|Name                |Quantity|Manufacturer Part  |Manufacturer       |Supplier    |Supplier Part|
-|--------------------|--------|-------------------|-------------------|------------|-------------|
-|ESP-12F(ESP8266MOD) |1       |ESP-12F(ESP8266MOD)|Ai-Thinker         |LCSC        |C82891       |
-|0805 10K Resitors   |8       |080500F1003T5E     |UniOhm             |LCSC        |C149504      |
-|0808 100nF Cap      |1       |C0805X104K101T     |HEC                |LCSC        |C105951      |
-|FDS8896             |3       |FDS8896            |ON Semicon         |LCSC        |C241820      |
-|K2-1107ST-A4SW-06   |2       |K2-1107ST-A4SW-06  |SMD Switches       |LCSC        |C118141      |
-|MP2307-MINI-360<td>1</td><td colspan="4">AliExpress - search "MINI-360"</td></tr></table>
+|Name                |Quantity|Manufacturer       |Supplier    |Supplier Part|
+|--------------------|--------|-------------------|------------|-------------|
+|ESP-12F             |1       |Ai-Thinker         |LCSC        |C82891       |
+|0805 10K Resitors   |8       |UniOhm             |LCSC        |C149504      |
+|0808 100nF Cap      |1       |HEC                |LCSC        |C105951      |
+|FDS8896             |3       |ON Semicon         |LCSC        |C241820      |
+|K2-1107ST-A4SW-06   |2       |SMD Switches       |LCSC        |C118141      |
+|MP2307-MINI-360<td>1</td><td colspan="3">AliExpress - search "MINI-360"</td></tr></table>
 
 
 I haven't included the IO connectors. All are 2.54 pitch and header strips or screw connectors can be used.
